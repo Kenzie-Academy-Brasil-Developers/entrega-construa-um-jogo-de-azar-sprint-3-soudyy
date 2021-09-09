@@ -230,19 +230,19 @@ h1 {
 }
 
 #jo {
-    background-image: url("../img/pedra.png");
+    background-image: url("./img/pedra.png");
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #ken {
-    background-image: url("../img/papel.png");
+    background-image: url("./img/papel.png");
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #po {
-    background-image: url("../img/tesoura.png");
+    background-image: url("./img/tesoura.png");
     background-repeat: no-repeat;
     background-position: center center;
 }
