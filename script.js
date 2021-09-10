@@ -1,8 +1,14 @@
 const jokenpo = ["pedra", "papel", "tesoura"]
-const secao = document.getElementById('illustration')
-const jogo = document.getElementById('theGame')
+const jo = document.getElementById('jo')
+const ken = document.getElementById('ken')
+const po = document.getElementById('po')
+const loginScreen = document.getElementById('illustration')
+const jokenChoice = document.getElementById('theGame')
+const battleScreen = document.getElementById('battle')
 const result = document.getElementById('result')
-
+const playerCard = document.getElementById('curretPlayer')
+const oponentCard = document.getElementById('curretOponent')
+const corpo = document.querySelector("body")
 const botaoJogar = document.getElementById('start')
 
 let receiver = 0
@@ -11,10 +17,13 @@ botaoJogar.addEventListener('click', jogar)
 
 
 function jogar() {
-    secao.style.display = "none"
-    console.log("pegou")
-    jogo.style.display = "flex"
+    loginScreen.style.animationName = "separeStart";
+    setTimeout(function() {
+        loginScreen.style.display = "none"
+        jokenChoice.style.display = "flex"
+    }, 1000)
 }
+
 
 const buttonChoice = function(event) {
 
@@ -26,42 +35,67 @@ const buttonChoice = function(event) {
 
     console.log(bot)
     if (playerChoice.id == "jo" && bot == 0 || playerChoice.id == "ken" && bot == 1 || playerChoice.id == "po" && bot == 2) {
-        result.innerText = "bot escolheu: " + jokenpo[bot] +
-            ", Empate"
-        result.style.display = "flex"
+        // result.innerText = "bot escolheu: " + jokenpo[bot] +
+        //     ", Empate"
+        // result.style.display = "flex"
     } else if (playerChoice.id == "jo" && bot == 2 || playerChoice.id == "ken" && bot == 0 || playerChoice.id == "po" && bot == 1) {
-        result.innerText = "bot escolheu: " + jokenpo[bot] +
-            ", você Ganhou"
-        result.style.display = "flex"
+        // result.innerText = "bot escolheu: " + jokenpo[bot] +
+        //     ", você Ganhou"
+        // result.style.display = "flex"
     } else {
-        result.innerText = "bot escolheu: " + jokenpo[bot] +
-            ", você perdeu"
-        result.style.display = "flex"
-
+        // result.innerText = "bot escolheu: " + jokenpo[bot] +
+        //     ", você perdeu"
+        // result.style.display = "flex"
     }
-    ClearArea()
+    corpo.style.animationName = "backgroundChangeColor";
+    //corpo.style.animationName = "fall";
 
-
+    if (playerChoice.id == "jo") {
+        playerCard.style.backgroundImage = "url('../img/pedra.png')";
+        playerChoice.style.animationName = "fallUp";
+        ken.style.animationName = "fallDown"
+        po.style.animationName = "fallDown"
+    } else if (playerChoice.id == "ken") {
+        playerChoice.style.animationName = "fallUp";
+        playerCard.style.backgroundImage = "url('../img/papel.png')";
+        jo.style.animationName = "fallDown"
+        po.style.animationName = "fallDown"
+    } else if (playerChoice.id == "po") {
+        playerChoice.style.animationName = "fallUp";
+        playerCard.style.backgroundImage = "url('../img/tesoura.png')";
+        ken.style.animationName = "fallDown"
+        jo.style.animationName = "fallDown"
+    }
+    if (bot == 0) {
+        oponentCard.style.backgroundImage = "url('../img/pedra.png')";
+    } else if (bot == 1) {
+        oponentCard.style.backgroundImage = "url('../img/papel.png')";
+    } else if (bot == 2) {
+        oponentCard.style.backgroundImage = "url('../img/tesoura.png')";
+    }
+    //playerCard.style.backgroundImage = "norepeat"
+    setTimeout(function() {
+            jokenChoice.style.display = "none";
+            battleScreen.style.display = "flex";
+        }, 2000)
+        //battleResult()
 }
 
 const cells = document.querySelectorAll('button');
-for (let i = 1; i < cells.length; i++) {
+for (let i = 2; i < cells.length; i++) {
     cells[i].addEventListener("click", buttonChoice)
 }
 
-function ClearArea() {
-    var timer = setTimeout(function() {
-        result.style.display = "none"
-
-    }, 2000);
-}
 
 function startingGame() {
-    jogo.style.display = "none"
+
+    jokenChoice.style.display = "none"
     result.style.display = "none"
 }
 startingGame()
 
-// setInterval(function() {
-//     console.log('Executa infinitamente, 1 vez por segundo.');
-// }, 1000);
+function unloadScrollBars() {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
+}
+unloadScrollBars();

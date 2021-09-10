@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>JoJokenpo</title>
 </head>
 
 <body>
     <header>
         <h1><em>JoJokenpo</em></h1>
     </header>
-    <section id="illustration">
+    <section class="inicio" id="illustration">
         <div>
             <h2>Como jogar:</h2>
             <p>Este é um jogo de pedra, papel ou tesoura com tema de <em>Jojo's bizarre adventures</em>, onde você e seu oponente escolhem uma carta e depois comparam para declarar o vencedor:</p>
@@ -24,12 +24,15 @@
                 <li>figuras iguais dão empate</li>
             </ul>
         </div>
-        <div>
-            <button id="start">JoJogar</button>
+        <div class="info_jogador">
+            <label for="">Nome do Jogador:</label>
+            <input id="playerName" type="text">
+            <button id="start">Jojogar vs Bot</button>
+            <button>Jojogador vs Jojogador</button>
         </div>
 
     </section>
-    <section id="theGame" hidden>
+    <section id="theGame">
 
         <button id="jo"></button>
 
@@ -38,6 +41,11 @@
         <button id="po"></button>
         <div id="result"></div>
 
+    </section>
+    <section id="battle">
+        <div class="player" id="curretPlayer"></div>
+        <h1>VS</h1>
+        <div class="oponent" id="curretOponent"></div>
     </section>
     <script src="script.js"></script>
 </body>

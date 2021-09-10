@@ -1,4 +1,4 @@
-/* html,
+    /* html,
 body,
 div,
 span,
@@ -127,140 +127,290 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 } */
-
-html {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    background-color: rgb(1, 1, 39);
-    font-family: OCR A Std, monospace;
-}
-
-header {
-    width: 100%;
-    text-align: center;
-}
-
-h1 {
-    background-image: linear-gradient(to bottom, rgb(245, 45, 185), rgb(233, 123, 214), rgb(248, 248, 248));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: rgb(235, 84, 215);
-    font-size: 50px;
-}
-
-#illustration {
-    display: flex;
-    font-size: 30px;
-    font-weight: bolder;
-    -webkit-text-stroke-width: 1.5px;
-    -webkit-text-stroke-color: white;
-}
-
-#illustration div {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: 50%;
-}
-
-#illustration h2 {
-    text-align: center;
-}
-
-#start {
-    justify-content: center;
-    align-self: center;
-    width: 300px;
-    height: 100px;
-    color: rgb(255, 0, 0);
-    font-size: 50px;
-    font-weight: bolder;
-    background-color: rgb(181, 0, 253);
-    background-image: linear-gradient(to bottom, rgb(245, 45, 185), rgb(233, 123, 214), rgb(248, 248, 248));
-    background-clip: text;
-}
-
-#theGame {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 500px;
-}
-
-#theGame div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px;
-    background-color: rgb(255, 0, 0);
-    border: 1px solid black;
-    color: black;
-    font-size: 50px;
-    font-weight: bolder;
-    font-style: italic;
-    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(233, 123, 214), rgb(255, 0, 0));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#result {
-    display: flex;
-}
-
-#theGame button {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 300px;
-    border: none;
-    border: 2px thick red;
-    margin: 10px 0 10px 0;
-}
-
-#jo {
-    background-image: url("../img/pedra.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-#ken {
-    background-image: url("../img/papel.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-#po {
-    background-image: url("../img/tesoura.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-#jo:hover {
-    background-color: rgb(28, 7, 122);
-}
-
-#ken:hover {
-    background-color: rgb(228, 231, 40);
-}
-
-#po:hover {
-    background-color: rgb(218, 42, 42);
-}
-
-@media screen and (min-width:800px) {
-    /* #illustration {
+    /***********INICIAL PART************/
+    
+    html {
+        height: 100%;
+    }
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: red;
+        background-color: rgb(1, 1, 39);
+        font-family: OCR A Std, monospace;
+        animation-name: none;
+        animation-duration: 6s;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    header {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h1 {
+        background-image: linear-gradient(to bottom, rgb(245, 45, 185), rgb(233, 123, 214), rgb(248, 248, 248));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: rgb(235, 84, 215);
+        font-size: 50px;
+    }
+    
+    .inicio {
+        animation: none 1s;
+    }
+    
+    #illustration {
+        display: flex;
+        /*****AQUI******/
+        font-size: 30px;
+        font-weight: bolder;
+        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-color: white;
+    }
+    
+    .info_jogador {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .info_jogador input {
+        height: 50px;
+        background-color: black;
+        font-size: 20px;
+        margin: 40px;
+    }
+    
+    #illustration div {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 50%;
+    }
+    
+    #illustration h2 {
+        text-align: center;
+    }
+    
+    #illustration button {
+        justify-content: center;
+        align-self: center;
+        width: 300px;
+        height: 100px;
+        color: rgb(255, 0, 0);
+        font-size: 40px;
+        font-weight: bolder;
+        background-color: rgb(181, 0, 253);
+        background-image: linear-gradient(to bottom, rgb(245, 45, 185), rgb(233, 123, 214), rgb(248, 248, 248));
+        background-clip: text;
+        margin: 20px;
+    }
+    /***********INICIAL PART************/
+    /***********CHOICE PART************/
+    
+    #theGame {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 500px;
+    }
+    
+    #theGame div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 150px;
+        background-color: rgb(255, 0, 0);
+        border: 1px solid black;
+        color: black;
+        font-size: 50px;
+        font-weight: bolder;
+        font-style: italic;
+        background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(233, 123, 214), rgb(255, 0, 0));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    #result {
+        display: flex;
+    }
+    
+    #theGame button {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 300px;
+        border: none;
+        margin: 10px 0 10px 0;
+        animation: rotate 2s;
+    }
+    
+    #jo {
+        background-image: url("../img/pedra.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    #ken {
+        background-image: url("../img/papel.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    #po {
+        background-image: url("../img/tesoura.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    #jo:hover {
+        background-color: rgb(28, 7, 122);
+        border-radius: 10% 0 10% 0;
+        transform: scale(1.1);
+        transform: rotate(-3deg);
+        transition: 1s;
+    }
+    
+    #ken:hover {
+        background-color: rgb(228, 231, 40);
+        border-radius: 0 20% 0 20%;
+        transform: scale(1.1);
+        transform: rotate(3deg);
+        transition: 1s;
+    }
+    
+    #po:hover {
+        background-color: rgb(218, 42, 42);
+        border-radius: 40% 0 40% 0;
+        transform: scale(1.1);
+        transform: rotate(-45deg);
+        transition: 1s;
+    }
+    /***********CHOICE PART************/
+    /***********BATTLE PART************/
+    
+    #battle {
+        width: 100%;
+        height: 800px;
+        display: none;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    #battle div {
+        background-color: white;
+        border: 1px solid black;
+        width: 300px;
+        height: 300px;
+    }
+    
+    #battle .player {
+        background-color: lightcoral;
+        animation: currentPlayer 2s;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    #battle .oponent {
+        background-color: lightseagreen;
+        animation: currentOponent 2s;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    /***********BATTLE PART************/
+    
+    @media screen and (min-width:800px) {
+        /* #illustration {
         flex-direction: row;
     } */
-}
+    }
+    
+    @keyframes backgroundChangeColor {
+        from {
+            background-color: rgb(1, 1, 39);
+        }
+        to {
+            background-color: black;
+        }
+    }
+    
+    @keyframes separeStart {
+        from {
+            transform: translateX(0px);
+        }
+        to {
+            transform: translateX(-2000px);
+        }
+    }
+    
+    @keyframes rotate {
+        from {
+            border-radius: 50%;
+            transform: scale(0) rotate(-180deg);
+        }
+        to {
+            transform: scale(1) rotate(0deg);
+            border-radius: 0%;
+        }
+    }
+    
+    @keyframes fallDown {
+        0% {
+            transform: translateY(0px);
+        }
+        100% {
+            border-radius: 50% 50% 50% 50%;
+            transform: translateY(1000px) rotate(360deg);
+        }
+    }
+    
+    @keyframes fallUp {
+        0% {
+            transform: translateY(0px);
+        }
+        30% {
+            border-radius: 50% 50% 50% 50%;
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(1000px) rotate(360deg);
+        }
+    }
+    
+    @keyframes currentPlayer {
+        0% {
+            border-radius: 50%;
+            transform: translateX(-1000px);
+        }
+        50% {
+            transform: translateX(350px)rotate(360deg);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+    
+    @keyframes currentOponent {
+        0% {
+            border-radius: 50%;
+            transform: translateX(1000px);
+        }
+        50% {
+            transform: translateX(-350px) rotate(-360deg);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
