@@ -142,20 +142,21 @@ const cells = document.querySelectorAll('button');
 for (let i = 2; i < cells.length; i++) {
     cells[i].addEventListener("click", buttonChoice)
 }
+
+
 let audioStatus = false;
 const playSound = document.getElementById('tocaMusica')
 playSound.addEventListener('click', function() {
     const audio = document.getElementById('audioInicio')
 
-
     if (audioStatus == false) {
         audio.play();
         audioStatus = true;
-        console.log(audioStatus)
+
     } else {
         audio.pause();
         audioStatus = false;
-        console.log(audioStatus)
+
     }
 
 })
