@@ -5,16 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="style.css">
     <title>JoJokenpo</title>
 </head>
 
 <body>
+
     <header>
-        <h1><em>JoJokenpo</em></h1>
+        <h1 id="playerTag"></h1>
+        <h1 id="vsTag"><em>JoJo's kenpo</em></h1>
+        <h1 id=oponentTag></h1>
     </header>
-    <section class="inicio" id="illustration">
-        <div>
+    <audio id="audioInicio" autoplay loop>
+        <source src="Sounds/DiornoTheme.mp3" type="audio/ogg">
+        <source src="Sounds/DiornoTheme.mp3" type="audio/mpeg">
+    </audio>
+    <section id="illustration">
+        <div id="rules">
             <h2>Como jogar:</h2>
             <p>Este é um jogo de pedra, papel ou tesoura com tema de <em>Jojo's bizarre adventures</em>, onde você e seu oponente escolhem uma carta e depois comparam para declarar o vencedor:</p>
             <ul>
@@ -26,9 +34,9 @@
         </div>
         <div class="info_jogador">
             <label for="">Nome do Jogador:</label>
-            <input id="playerName" type="text">
+            <input id="input" type="text" maxlength="10" required placeholder="(Digite seu nome de jogador)" />
             <button id="start">Jojogar vs Bot</button>
-            <button>Jojogador vs Jojogador</button>
+            <button hidden>Jojogador vs Jojogador</button>
         </div>
 
     </section>
@@ -39,14 +47,18 @@
         <button id="ken"></button>
 
         <button id="po"></button>
-        <div id="result"></div>
-
+        <audio id="jokenAudio">
+    <source src="Sounds/TobeContinue.mp3" type="audio/ogg">
+    <source src="Sounds/TobeContinue.mp3" type="audio/mpeg">
+</audio>
     </section>
     <section id="battle">
         <div class="player" id="curretPlayer"></div>
-        <h1>VS</h1>
+        <h1 id="vs">VS</h1>
         <div class="oponent" id="curretOponent"></div>
+        <h1 id="result">Resultado</h1>
     </section>
+    <section id="continue"></section>
     <script src="script.js"></script>
 </body>
 

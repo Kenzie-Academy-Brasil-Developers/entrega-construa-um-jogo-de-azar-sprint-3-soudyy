@@ -1,84 +1,133 @@
-const jokenpo = ["pedra", "papel", "tesoura"]
-const jo = document.getElementById('jo')
-const ken = document.getElementById('ken')
-const po = document.getElementById('po')
-const loginScreen = document.getElementById('illustration')
-const jokenChoice = document.getElementById('theGame')
-const battleScreen = document.getElementById('battle')
-const result = document.getElementById('result')
-const playerCard = document.getElementById('curretPlayer')
-const oponentCard = document.getElementById('curretOponent')
-const corpo = document.querySelector("body")
-const botaoJogar = document.getElementById('start')
+const jokenpo = ["pedra", "papel", "tesoura"];
+const jo = document.getElementById('jo');
+const ken = document.getElementById('ken');
+const po = document.getElementById('po');
 
-let receiver = 0
+const loginScreen = document.getElementById('illustration');
+const choiceScreen = document.getElementById('theGame');
+const battleScreen = document.getElementById('battle');
+const result = document.getElementById('result');
 
-botaoJogar.addEventListener('click', jogar)
+const playerCard = document.getElementById('curretPlayer');
+const oponentCard = document.getElementById('curretOponent');
+
+const corpo = document.querySelector("body");
+const playButton = document.getElementById('start');
+
+const versusTag = document.getElementById('vsTag');
+const oponentTag = document.getElementById('oponentTag');
+const nameTag = document.getElementById('playerTag');
+
+const prankScreen = document.getElementById('continue');
+const audioPrank = document.getElementById('jokenAudio');
+let playerResult = ''
+let playerPoints = 0;
+let oponentPoints = 0;
+let sequenceVictory = 0;
+
+playButton.addEventListener('click', verficaInput);
 
 
-function jogar() {
-    loginScreen.style.animationName = "separeStart";
-    setTimeout(function() {
-        loginScreen.style.display = "none"
-        jokenChoice.style.display = "flex"
-    }, 1000)
+function verficaInput() {
+    const player = document.getElementById('input').value;
+    playerResult = player
+    console.log(playerResult);
+    if (player != '') { jogarVsBot(player); }
 }
 
 
+function jogarVsBot(player) {
+
+    versusTag.style.display = "none"
+    oponentTag.innerText = "Dio:" + oponentPoints;
+    nameTag.innerText = player + ":" + playerPoints;
+    loginScreen.style.animationName = "separeStart";
+    setTimeout(function() {
+        loginScreen.style.display = "none";
+        choiceScreen.style.display = "flex";
+    }, 999);
+
+}
+
 const buttonChoice = function(event) {
 
-    const playerChoice = event.target
 
-    console.log(playerChoice.id)
+    const playerChoice = event.target;
 
     const bot = Math.floor(Math.random() * jokenpo.length)
 
     console.log(bot)
     if (playerChoice.id == "jo" && bot == 0 || playerChoice.id == "ken" && bot == 1 || playerChoice.id == "po" && bot == 2) {
-        // result.innerText = "bot escolheu: " + jokenpo[bot] +
-        //     ", Empate"
-        // result.style.display = "flex"
+        result.innerText = "Dio escolheu: " + jokenpo[bot] +
+            ", Empate"
+
     } else if (playerChoice.id == "jo" && bot == 2 || playerChoice.id == "ken" && bot == 0 || playerChoice.id == "po" && bot == 1) {
-        // result.innerText = "bot escolheu: " + jokenpo[bot] +
-        //     ", você Ganhou"
-        // result.style.display = "flex"
+        result.innerText = "Dio escolheu: " + jokenpo[bot] +
+            ", você Ganhou"
+        sequenceVictory = 0;
+        playerPoints++;
+
     } else {
-        // result.innerText = "bot escolheu: " + jokenpo[bot] +
-        //     ", você perdeu"
-        // result.style.display = "flex"
+        result.innerText = "Dio escolheu: " + jokenpo[bot] +
+            ", você perdeu"
+        oponentPoints++;
+        sequenceVictory++;
     }
+    result.style.display = "block"
     corpo.style.animationName = "backgroundChangeColor";
-    //corpo.style.animationName = "fall";
 
     if (playerChoice.id == "jo") {
-        playerCard.style.backgroundImage = "url('../img/pedra.png')";
+        playerCard.style.backgroundImage = "url('./img/newRock.png')";
         playerChoice.style.animationName = "fallUp";
         ken.style.animationName = "fallDown"
         po.style.animationName = "fallDown"
     } else if (playerChoice.id == "ken") {
         playerChoice.style.animationName = "fallUp";
-        playerCard.style.backgroundImage = "url('../img/papel.png')";
+        playerCard.style.backgroundImage = "url('./img/newPaper.png')";
         jo.style.animationName = "fallDown"
         po.style.animationName = "fallDown"
     } else if (playerChoice.id == "po") {
         playerChoice.style.animationName = "fallUp";
-        playerCard.style.backgroundImage = "url('../img/tesoura.png')";
+        playerCard.style.backgroundImage = "url('./img/newScissor.png')";
         ken.style.animationName = "fallDown"
         jo.style.animationName = "fallDown"
     }
     if (bot == 0) {
-        oponentCard.style.backgroundImage = "url('../img/pedra.png')";
+        oponentCard.style.backgroundImage = "url('./img/newRock.png')";
     } else if (bot == 1) {
-        oponentCard.style.backgroundImage = "url('../img/papel.png')";
+        oponentCard.style.backgroundImage = "url('./img/newPaper.png')";
     } else if (bot == 2) {
-        oponentCard.style.backgroundImage = "url('../img/tesoura.png')";
+        oponentCard.style.backgroundImage = "url('./img/newScissor.png')";
     }
-    //playerCard.style.backgroundImage = "norepeat"
+
     setTimeout(function() {
-            jokenChoice.style.display = "none";
-            battleScreen.style.display = "flex";
-        }, 2000)
-        //battleResult()
+
+
+        jo.style.animationName = "none"
+        ken.style.animationName = "none"
+        po.style.animationName = "none"
+        choiceScreen.style.animationName = "none"
+        choiceScreen.style.display = "none";
+        battleScreen.style.display = "flex";
+        if (sequenceVictory == 3) {
+            prankScreen.style.animationName = "Prank";
+        }
+    }, 2000)
+    setTimeout(function() {
+        battleScreen.style.animationName = "UpResult"
+        choiceScreen.style.animationName = "rotate"
+
+    }, 5000)
+    setTimeout(function() {
+        choiceScreen.style.display = "flex";
+        corpo.style.animationName = "none";
+        battleScreen.style.display = "none";
+        battleScreen.style.animationName = "none"
+        nameTag.innerText = playerResult + ":" + playerPoints;
+        oponentTag.innerText = "Dio:" + oponentPoints;
+    }, 6000)
+
+    //battleResult()
 }
 
 const cells = document.querySelectorAll('button');
@@ -86,11 +135,18 @@ for (let i = 2; i < cells.length; i++) {
     cells[i].addEventListener("click", buttonChoice)
 }
 
+function AudioPlayPrank() {
+    const audio = document.getElementById('audioInicio')
+    audio = new Audio('./Sounds/TobeContinue.mp3')
+    audio.play();
+}
+
 
 function startingGame() {
 
-    jokenChoice.style.display = "none"
+    choiceScreen.style.display = "none"
     result.style.display = "none"
+
 }
 startingGame()
 
