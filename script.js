@@ -102,7 +102,7 @@ const buttonChoice = function(event) {
         oponentCard.style.backgroundImage = "url('./img/newScissor.png')";
     }
 
-    if (sequenceVictory == 1) {
+    if (sequenceVictory == 3) {
         AudioPlayPrank()
 
     }
@@ -113,7 +113,7 @@ const buttonChoice = function(event) {
         choiceScreen.style.animationName = "none"
         choiceScreen.style.display = "none";
         battleScreen.style.display = "flex";
-        if (sequenceVictory == 1) {
+        if (sequenceVictory == 3) {
 
             prankScreen.style.animationName = "Prank";
         }
