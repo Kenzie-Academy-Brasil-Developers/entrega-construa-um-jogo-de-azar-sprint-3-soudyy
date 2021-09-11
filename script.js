@@ -32,12 +32,14 @@ function verficaInput() {
     const player = document.getElementById('input').value;
     playerResult = player
     console.log(playerResult);
+
     if (player != '') { jogarVsBot(player); }
 }
 
 
 function jogarVsBot(player) {
 
+    BackgroundAudio()
     versusTag.style.display = "none"
     oponentTag.innerText = "Dio:" + oponentPoints;
     nameTag.innerText = player + ":" + playerPoints;
@@ -100,32 +102,38 @@ const buttonChoice = function(event) {
         oponentCard.style.backgroundImage = "url('./img/newScissor.png')";
     }
 
+    if (sequenceVictory == 1) {
+        AudioPlayPrank()
+
+    }
     setTimeout(function() {
-
-
         jo.style.animationName = "none"
         ken.style.animationName = "none"
         po.style.animationName = "none"
         choiceScreen.style.animationName = "none"
         choiceScreen.style.display = "none";
         battleScreen.style.display = "flex";
-        if (sequenceVictory == 3) {
+        if (sequenceVictory == 1) {
+
             prankScreen.style.animationName = "Prank";
         }
-    }, 2000)
+
+    }, 1999)
     setTimeout(function() {
         battleScreen.style.animationName = "UpResult"
         choiceScreen.style.animationName = "rotate"
 
-    }, 5000)
+
+    }, 4999)
     setTimeout(function() {
         choiceScreen.style.display = "flex";
         corpo.style.animationName = "none";
         battleScreen.style.display = "none";
         battleScreen.style.animationName = "none"
+        prankScreen.style.animationName = "none";
         nameTag.innerText = playerResult + ":" + playerPoints;
         oponentTag.innerText = "Dio:" + oponentPoints;
-    }, 6000)
+    }, 5999)
 
     //battleResult()
 }
@@ -134,13 +142,36 @@ const cells = document.querySelectorAll('button');
 for (let i = 2; i < cells.length; i++) {
     cells[i].addEventListener("click", buttonChoice)
 }
-
-function AudioPlayPrank() {
+let audioStatus = false;
+const playSound = document.getElementById('tocaMusica')
+playSound.addEventListener('click', function() {
     const audio = document.getElementById('audioInicio')
-    audio = new Audio('./Sounds/TobeContinue.mp3')
+
+
+    if (audioStatus == false) {
+        audio.play();
+        audioStatus = true;
+        console.log(audioStatus)
+    } else {
+        audio.pause();
+        audioStatus = false;
+        console.log(audioStatus)
+    }
+
+})
+
+function BackgroundAudio() {
+    const audio = document.getElementById('audioInicio')
     audio.play();
 }
 
+function AudioPlayPrank() {
+    const audioPrank = document.getElementById('jokenAudio')
+    const audioBack = document.getElementById('audioInicio')
+    audioBack.pause();
+    audioPrank.currentTime = 1
+    audioPrank.play();
+}
 
 function startingGame() {
 
@@ -149,6 +180,7 @@ function startingGame() {
 
 }
 startingGame()
+
 
 function unloadScrollBars() {
     document.documentElement.style.overflow = 'hidden';

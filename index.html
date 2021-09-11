@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>JoJokenpo</title>
+    <title>JoJo's kenpo</title>
 </head>
 
 <body>
@@ -17,10 +18,13 @@
         <h1 id="vsTag"><em>JoJo's kenpo</em></h1>
         <h1 id=oponentTag></h1>
     </header>
-    <audio id="audioInicio" autoplay loop>
-        <source src="./Sounds/DiornoTheme.mp3" type="audio/ogg">
-        <source src="./Sounds/DiornoTheme.mp3" type="audio/mpeg">
+
+    <audio id="audioInicio" loop>
+        <source src="./Sounds/DiornoTheme2.mp3" type="audio/ogg">
+        <source src="./Sounds/DiornoTheme2.mp3" type="audio/mpeg">
     </audio>
+    <button id="tocaMusica"><i class="fas fa-volume-up"></i></button>
+
     <section id="illustration">
         <div id="rules">
             <h2>Como jogar:</h2>
@@ -48,9 +52,9 @@
 
         <button id="po"></button>
         <audio id="jokenAudio">
-    <source src="Sounds/TobeContinue.mp3" type="audio/ogg">
-    <source src="Sounds/TobeContinue.mp3" type="audio/mpeg">
-</audio>
+            <source src="Sounds/TobeContinue.mp3" type="audio/ogg">
+            <source src="Sounds/TobeContinue.mp3" type="audio/mpeg">
+        </audio>
     </section>
     <section id="battle">
         <div class="player" id="curretPlayer"></div>
